@@ -69,10 +69,10 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n\r\n");
+WriteLiteral("\r\n");
 
             
-            #line 29 "..\..\Views\Home\Index.cshtml"
+            #line 27 "..\..\Views\Home\Index.cshtml"
  foreach (Post post in Model.Posts)
 {
 
@@ -89,38 +89,39 @@ WriteLiteral(" class=\"blog-post-title\"");
 
 WriteLiteral(">\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1102), Tuple.Create("\"", 1179)
-, Tuple.Create(Tuple.Create("", 1109), Tuple.Create("/", 1109), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1098), Tuple.Create("\"", 1176)
+, Tuple.Create(Tuple.Create("", 1105), Tuple.Create<System.Object, System.Int32>(Href("~/")
+, 1105), false)
             
-            #line 33 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1110), Tuple.Create<System.Object, System.Int32>(post.PostDate.Year
-            
-            #line default
-            #line hidden
-, 1110), false)
-, Tuple.Create(Tuple.Create("", 1129), Tuple.Create("/", 1129), true)
-            
-            #line 33 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1130), Tuple.Create<System.Object, System.Int32>(post.PostDate.Month.ToString("00")
+            #line 31 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1107), Tuple.Create<System.Object, System.Int32>(post.PostDate.Year
             
             #line default
             #line hidden
-, 1130), false)
-, Tuple.Create(Tuple.Create("", 1165), Tuple.Create("/", 1165), true)
+, 1107), false)
+, Tuple.Create(Tuple.Create("", 1126), Tuple.Create("/", 1126), true)
             
-            #line 33 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1166), Tuple.Create<System.Object, System.Int32>(post.PostUrl
+            #line 31 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1127), Tuple.Create<System.Object, System.Int32>(post.PostDate.Month.ToString("00")
             
             #line default
             #line hidden
-, 1166), false)
+, 1127), false)
+, Tuple.Create(Tuple.Create("", 1162), Tuple.Create("/", 1162), true)
+            
+            #line 31 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1163), Tuple.Create<System.Object, System.Int32>(post.PostUrl
+            
+            #line default
+            #line hidden
+, 1163), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 33 "..\..\Views\Home\Index.cshtml"
-                                                                                        Write(post.PostTitle);
+            #line 31 "..\..\Views\Home\Index.cshtml"
+                                                                                         Write(post.PostTitle);
 
             
             #line default
@@ -132,7 +133,7 @@ WriteLiteral(" class=\"blog-post-meta\"");
 WriteLiteral(">");
 
             
-            #line 35 "..\..\Views\Home\Index.cshtml"
+            #line 33 "..\..\Views\Home\Index.cshtml"
                              Write(post.PostDate.ToNiceDate());
 
             
@@ -141,13 +142,13 @@ WriteLiteral(">");
 WriteLiteral("</p>\r\n");
 
             
-            #line 36 "..\..\Views\Home\Index.cshtml"
+            #line 34 "..\..\Views\Home\Index.cshtml"
         
             
             #line default
             #line hidden
             
-            #line 36 "..\..\Views\Home\Index.cshtml"
+            #line 34 "..\..\Views\Home\Index.cshtml"
          if (post.PostText.Length > 1500)
         {
             
@@ -155,7 +156,7 @@ WriteLiteral("</p>\r\n");
             #line default
             #line hidden
             
-            #line 38 "..\..\Views\Home\Index.cshtml"
+            #line 36 "..\..\Views\Home\Index.cshtml"
        Write(Html.Raw(post.PostText.Substring(0, 1500)));
 
             
@@ -164,7 +165,7 @@ WriteLiteral("</p>\r\n");
 WriteLiteral("<span>...</span>\r\n");
 
             
-            #line 39 "..\..\Views\Home\Index.cshtml"
+            #line 37 "..\..\Views\Home\Index.cshtml"
         }
         else
         {
@@ -173,14 +174,14 @@ WriteLiteral("<span>...</span>\r\n");
             #line default
             #line hidden
             
-            #line 42 "..\..\Views\Home\Index.cshtml"
+            #line 40 "..\..\Views\Home\Index.cshtml"
        Write(Html.Raw(post.PostText));
 
             
             #line default
             #line hidden
             
-            #line 42 "..\..\Views\Home\Index.cshtml"
+            #line 40 "..\..\Views\Home\Index.cshtml"
                                     
         }
 
@@ -191,37 +192,38 @@ WriteLiteral("        <br /><a");
 
 WriteLiteral(" class=\"btn btn-primary\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1536), Tuple.Create("\"", 1613)
-, Tuple.Create(Tuple.Create("", 1543), Tuple.Create("/", 1543), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1533), Tuple.Create("\"", 1611)
+, Tuple.Create(Tuple.Create("", 1540), Tuple.Create<System.Object, System.Int32>(Href("~/")
+, 1540), false)
             
-            #line 44 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1544), Tuple.Create<System.Object, System.Int32>(post.PostDate.Year
-            
-            #line default
-            #line hidden
-, 1544), false)
-, Tuple.Create(Tuple.Create("", 1563), Tuple.Create("/", 1563), true)
-            
-            #line 44 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1564), Tuple.Create<System.Object, System.Int32>(post.PostDate.Month.ToString("00")
+            #line 42 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1542), Tuple.Create<System.Object, System.Int32>(post.PostDate.Year
             
             #line default
             #line hidden
-, 1564), false)
-, Tuple.Create(Tuple.Create("", 1599), Tuple.Create("/", 1599), true)
+, 1542), false)
+, Tuple.Create(Tuple.Create("", 1561), Tuple.Create("/", 1561), true)
             
-            #line 44 "..\..\Views\Home\Index.cshtml"
-                        , Tuple.Create(Tuple.Create("", 1600), Tuple.Create<System.Object, System.Int32>(post.PostUrl
+            #line 42 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1562), Tuple.Create<System.Object, System.Int32>(post.PostDate.Month.ToString("00")
             
             #line default
             #line hidden
-, 1600), false)
+, 1562), false)
+, Tuple.Create(Tuple.Create("", 1597), Tuple.Create("/", 1597), true)
+            
+            #line 42 "..\..\Views\Home\Index.cshtml"
+                         , Tuple.Create(Tuple.Create("", 1598), Tuple.Create<System.Object, System.Int32>(post.PostUrl
+            
+            #line default
+            #line hidden
+, 1598), false)
 );
 
 WriteLiteral(">Read More -></a>\r\n\r\n    </div>\r\n");
 
             
-            #line 47 "..\..\Views\Home\Index.cshtml"
+            #line 45 "..\..\Views\Home\Index.cshtml"
 }
 
             
@@ -230,7 +232,7 @@ WriteLiteral(">Read More -></a>\r\n\r\n    </div>\r\n");
 WriteLiteral("\r\n");
 
             
-            #line 49 "..\..\Views\Home\Index.cshtml"
+            #line 47 "..\..\Views\Home\Index.cshtml"
  if (Model.NextButtonSearchParams != null)
 {
 
@@ -243,53 +245,22 @@ WriteLiteral(" class=\"pager\"");
 
 WriteLiteral(">\r\n            <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1756), Tuple.Create("\"", 1801)
-, Tuple.Create(Tuple.Create("", 1763), Tuple.Create<System.Object, System.Int32>(Href("~/search?")
-, 1763), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 1754), Tuple.Create("\"", 1799)
+, Tuple.Create(Tuple.Create("", 1761), Tuple.Create<System.Object, System.Int32>(Href("~/search?")
+, 1761), false)
             
-            #line 53 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1772), Tuple.Create<System.Object, System.Int32>(Model.NextButtonSearchParams
+            #line 51 "..\..\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1770), Tuple.Create<System.Object, System.Int32>(Model.NextButtonSearchParams
             
             #line default
             #line hidden
-, 1772), false)
+, 1770), false)
 );
 
 WriteLiteral(">Next</a></li>\r\n        </ul>\r\n    </nav>\r\n");
 
             
-            #line 56 "..\..\Views\Home\Index.cshtml"
-}
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n\r\n");
-
-            
-            #line 59 "..\..\Views\Home\Index.cshtml"
- if (!string.Equals((string)System.Configuration.ConfigurationManager.AppSettings["environment"], "dev"))
-{
-
-            
-            #line default
-            #line hidden
-WriteLiteral(@"    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-2382034-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-");
-
-            
-            #line 73 "..\..\Views\Home\Index.cshtml"
+            #line 54 "..\..\Views\Home\Index.cshtml"
 }
 
             
