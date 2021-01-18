@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Web;
+
+using LachlanBarclayNet.DAO.Standard;
 
 namespace LachlanBarclayNet.DAO
 {
@@ -11,41 +15,65 @@ namespace LachlanBarclayNet.DAO
     {
         public List<Post> GetAll()
         {
-            using (LbNet context = new LbNet())
+            using (lachlanbarclaynet2Context context = new lachlanbarclaynet2Context(
+                ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString))
             {
                 return context
-                    .Posts
+                    .Post
                     .OrderByDescending(x => x.PostDate)
+                    .ToList()
+                    .Select(x => MapPost(x))
                     .ToList();
             }
         }
 
         public List<Post> GetAllLivePosts()
         {
-            using (LbNet context = new LbNet())
-            {
+            using (lachlanbarclaynet2Context context = new lachlanbarclaynet2Context(
+                ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString))
+            { 
                 return context
-                    .Posts
-                    .Where(x => x.PostDate < DateTime.Now && x.Published)
+                    .Post
+                    .Where(x => x.PostDate < DateTime.Now && (x.Published.HasValue && x.Published.Value))
                     .OrderByDescending(x => x.PostDate)
+                    .ToList()
+                    .Select(x => MapPost(x))
                     .ToList();
             }
         }
 
         public List<Post> PostSearch(DateTime searchFromDate, string category, int limit)
         {
-            using (LbNet context = new LbNet())
+            using (lachlanbarclaynet2Context context = new lachlanbarclaynet2Context(
+                ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString))
             {
                 return context
-                    .Posts
-                    .Include("PostComments")
-                    .Where(x => x.Published && 
+                    .Post
+                    .Include(x => x.PostComment)
+                    .Where(x => x.Published.HasValue && x.Published.Value && 
                                 x.PostDate < searchFromDate && 
                                 (category == null || x.PostType.PostTypeName == category))
                     .OrderByDescending(x => x.PostDate)
                     .Take(limit)
+                    .ToList().
+                    Select(x => MapPost(x))
                     .ToList();
             }
+        }
+
+        private Post MapPost(LachlanBarclayNet.DAO.Standard.Post p)
+        {
+            return new Post
+            {
+                PostDescription = p.PostDescription,
+                PostDate = p.PostDate,
+                PostText = p.PostText,
+                PostTypeID = p.PostTypeId,
+                PostTitle = p.PostTitle,
+                PostID = p.PostId,
+                PostUrl = p.PostUrl,
+                Published = p.Published ?? false
+            };
         }
 
         public List<Post> PostSearchString(string SearchString, DateTime? SearchFromDate)

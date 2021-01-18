@@ -94,9 +94,6 @@ GO
 ALTER TABLE [dbo].[Post]  WITH CHECK ADD FOREIGN KEY([PostTypeID])
 REFERENCES [dbo].[PostType] ([PostTypeID])
 GO
-ALTER TABLE [dbo].[Post]  WITH CHECK ADD FOREIGN KEY([PostTypeID])
-REFERENCES [dbo].[PostType] ([PostTypeID])
-GO
 ALTER TABLE [dbo].[PostComment]  WITH CHECK ADD  CONSTRAINT [FK_PostComment_Post] FOREIGN KEY([PostID])
 REFERENCES [dbo].[Post] ([PostID])
 GO
