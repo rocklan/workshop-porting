@@ -12,7 +12,6 @@ namespace LachlanBarclayNet.DAO
         public PostType()
         {
             Posts = new HashSet<Post>();
-            Posts1 = new HashSet<Post>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -25,7 +24,5 @@ namespace LachlanBarclayNet.DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts1 { get; set; }
     }
 }

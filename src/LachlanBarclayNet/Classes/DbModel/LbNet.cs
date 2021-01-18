@@ -24,12 +24,6 @@ namespace LachlanBarclayNet.DAO
                 .WithRequired(e => e.PostType)
                 .HasForeignKey(e => e.PostTypeID)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<PostType>()
-                .HasMany(e => e.Posts1)
-                .WithRequired(e => e.PostType1)
-                .HasForeignKey(e => e.PostTypeID)
-                .WillCascadeOnDelete(false);
         }
     }
 }

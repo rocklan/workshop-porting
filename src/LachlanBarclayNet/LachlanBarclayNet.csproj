@@ -275,10 +275,10 @@
     <Compile Include="Classes\Common\Extensions.cs" />
     <Compile Include="Classes\Common\PostData.cs" />
     <Compile Include="Classes\Common\YearPost.cs" />
-    <Compile Include="Classes\Controllers\ContactController.cs" />
-    <Compile Include="Classes\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Classes\Interfaces\IIdentityLogic.cs" />
-    <Compile Include="Classes\Controllers\SitemapController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Classes\Common\RecaptchaApi.cs" />
     <Compile Include="Classes\DAO\UserDAO.cs" />
     <Compile Include="Classes\DbModel\User.cs" />

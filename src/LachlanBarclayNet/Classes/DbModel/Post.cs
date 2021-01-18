@@ -38,8 +38,6 @@ namespace LachlanBarclayNet.DAO
 
         public virtual PostType PostType { get; set; }
 
-        public virtual PostType PostType1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostComment> PostComments { get; set; }
     }
