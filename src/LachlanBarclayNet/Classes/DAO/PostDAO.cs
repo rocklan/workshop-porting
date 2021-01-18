@@ -42,24 +42,22 @@ namespace LachlanBarclayNet.DAO
             }
         }
 
-        public List<Post> PostSearch(DateTime searchFromDate, string category, int limit)
-        {
-            using (lachlanbarclaynet2Context context = new lachlanbarclaynet2Context(
-                ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString))
-            {
-                return context
-                    .Post
-                    .Include(x => x.PostComment)
-                    .Where(x => x.Published.HasValue && x.Published.Value && 
-                                x.PostDate < searchFromDate && 
-                                (category == null || x.PostType.PostTypeName == category))
-                    .OrderByDescending(x => x.PostDate)
-                    .Take(limit)
-                    .ToList()
-                    .Select(x => MapPost(x))
-                    .ToList();
-            }
-        }
+public List<LachlanBarclayNet.DAO.Standard.Post> PostSearch(DateTime searchFromDate, string category, int limit)
+{
+    using (lachlanbarclaynet2Context context = new lachlanbarclaynet2Context(
+        ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString))
+    {
+        return context
+            .Post
+            .Include(x => x.PostComment)
+            .Where(x => x.Published.HasValue && x.Published.Value &&
+                        x.PostDate < searchFromDate &&
+                        (category == null || x.PostType.PostTypeName == category))
+            .OrderByDescending(x => x.PostDate)
+            .Take(limit)
+            .ToList();
+    }
+}
 
         private Post MapPost(LachlanBarclayNet.DAO.Standard.Post p)
         {

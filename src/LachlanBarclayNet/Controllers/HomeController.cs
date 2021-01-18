@@ -61,7 +61,7 @@ namespace LachlanBarclayNet.Controllers
         private IndexBlogViewModel GetIndexViewModel(string category, string from)
         {
             DateTime searchFromDate = GetSearchDate(from);
-            List<Post> posts = _postDAO.PostSearch(searchFromDate, category, _searchLimit);
+            var posts = _postDAO.PostSearch(searchFromDate, category, _searchLimit);
 
             IndexBlogViewModel ViewModel = new IndexBlogViewModel()
             {

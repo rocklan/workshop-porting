@@ -12,7 +12,7 @@ namespace LachlanBarclayNet.DAO
         List<Post> GetAll();
         List<PostType> GetTypes();
         int Insert(Post post);
-        List<Post> PostSearch(DateTime searchFromDate, string category, int limit);
+        List<LachlanBarclayNet.DAO.Standard.Post> PostSearch(DateTime searchFromDate, string category, int limit);
         List<Post> PostSearchString(string SearchString, DateTime? SearchFromDate);
         void Update(Post post);
         List<Post> GetPostsForSideBar(int PostTypeID);

@@ -8,7 +8,7 @@ namespace LachlanBarclayNet.ViewModel
 {
     public class IndexBlogViewModel
     {
-        public List<Post> Posts { get; set; }
+        public List<LachlanBarclayNet.DAO.Standard.Post> Posts { get; set; }
         public List<YearPost> Years { get; set; }
         public string Category { get; set; }
         public string NextButtonSearchParams { get; set; }
