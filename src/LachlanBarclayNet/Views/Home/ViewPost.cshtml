@@ -1,0 +1,36 @@
+﻿@model Post
+
+@{
+    ViewBag.Title = Model.PostTitle;
+    ViewBag.Description = Model.PostDescription;
+}
+
+
+<div class="blog-post">
+    <h2 class="blog-post-title">@Model.PostTitle</h2>
+    <p class="blog-post-meta">@Model.PostDate.ToNiceDate()</p>
+    @Html.Raw(Model.PostText)
+
+    @if (Model.PostComments.Count > 0)
+    {
+        <hr />
+        foreach (var comment in Model.PostComments)
+        {
+            <p>
+                <b>@comment.Username</b>: @Html.Raw(comment.Comment)<br />
+                <i>@comment.PostCommentDate.ToNiceDateTime()</i>
+            </p>
+        }
+    }
+
+    @if (!string.Equals((string)System.Configuration.ConfigurationManager.AppSettings["environment"], "dev"))
+    {
+    <div style='margin-top:20px' id="post_disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'metaltheater'; 
+        var disqus_identifier = '@Model.PostID';
+        var disqus_title = '@Model.PostTitle.Replace("'", "\\'")';
+        var disqus_url = '@Model.FullUrl';
+    </script>
+    }
+</div>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>Admin</h1>
+    <a style='margin-right: 20px' href="@Url.Action("Index", "Post", new { area = "admin" })">Posts</a>
+    <a style='margin-right: 20px' href="@Url.Action("Search", "Post", new { area = "admin" })">Search</a>
+    <a style='margin-right: 20px' href="@Url.Action("Img", "Post", new { area = "admin" })">Image Links</a>
+    <a style='margin-right: 20px' href="@Url.Action("SetPassword", "Account", new { area = "admin" })">Set Password</a>
+    <a style='margin-right: 20px' href="@Url.Action("QrCode", "Account", new { area = "admin" })">Qr Code</a>
+    <a href="@Url.Action("Logout", "Login", new { area = "admin" })">Logout</a>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

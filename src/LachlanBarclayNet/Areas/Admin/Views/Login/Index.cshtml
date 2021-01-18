@@ -1,0 +1,34 @@
+﻿@model LoginIndexViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.TextBoxFor(x => x.username)<br />
+    @Html.PasswordFor(x => x.password)<br />
+    @Html.TextBoxFor(x => x.qrcode)
+    <br /><br />
+    <input type="submit" value="Submit" />
+
+}
+
+@if (Model != null)
+{
+    <br /><br />
+    if (Model.FailCount.HasValue)
+    {
+        <p>Fail count: @Model.FailCount.Value</p>
+    }
+
+    if (Model.LockedOut.HasValue)
+    {
+        <p>Locked out since: @Model.LockedOut.Value</p>
+    }
+}

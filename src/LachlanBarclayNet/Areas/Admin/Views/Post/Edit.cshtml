@@ -1,0 +1,132 @@
+﻿@model LachlanBarclayNet.DAO.Post
+
+@{
+                /**/
+
+                ViewBag.Title = "Edit";
+}
+
+<style type="text/css">
+    .editor-field {
+        margin-bottom: 1em;
+    }
+
+    .editor-label {
+        margin-bottom: 5px;
+    }
+</style>
+
+
+<h2>Edit</h2>
+
+@if (ViewBag.action != null)
+{
+    <div style="background: green; color: white; padding: 10px;">@ViewBag.action</div>
+    <br />
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="editor-label">
+        Post go live date
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.PostDate)
+        @Html.ValidationMessageFor(model => model.PostDate)
+    </div>
+
+    <div class="editor-label">
+        Post Type
+    </div>
+    <div class="editor-field">
+        @Html.DropDownList("PostTypeID", String.Empty)
+        @Html.ValidationMessageFor(model => model.PostTypeID)
+    </div>
+
+    <div class="editor-label">
+        Title
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.PostTitle, new { style = "width: 100%", maxlength = "255" })
+        @Html.ValidationMessageFor(model => model.PostTitle)
+    </div>
+
+    <div class="editor-label">
+        Description (for RSS)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.PostDescription, new { style = "width: 100%", maxlength = "255" })
+        @Html.ValidationMessageFor(model => model.PostDescription)
+    </div>
+
+    @Html.HiddenFor(model => model.PostID)
+
+    <div class="editor-label">
+        Friendly URL
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.PostUrl)
+        @Html.ValidationMessageFor(model => model.PostUrl)
+    </div>
+
+    <div class="editor-label">
+        Published
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Published)
+        @Html.ValidationMessageFor(model => model.Published)
+    </div>
+
+    <div style="width: 49%; float: left;">
+        <div class="editor-label">
+            Content
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.PostText, new { style = "width:100%; height: 600px" })
+            @Html.ValidationMessageFor(model => model.PostText)
+        </div>
+    </div>
+    <div style="width: 49%; float: right" id="RealtimePreviewDiv">
+
+    </div>
+    <br style="clear: both" />
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+
+
+<br style="clear: both" />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@Scripts.Render("~/bundles/jscript")
+
+
+<script type="text/javascript">
+    function renderPreview() {
+        var content = $("#PostText").val();
+
+        var title = $("#PostTitle").val();
+        var publishdate = $("#PostDate").val();
+        var preview = "<h2 style='margin-bottom: 0px'>" + title + "</h2>";
+        preview += "<div style='color: gray; margin-bottom:1em'>" + publishdate + "</div>";
+        preview += content;
+
+        $("#RealtimePreviewDiv").html(preview);
+    }
+
+    $(document).ready(function () {
+        $("#PostText").on("keyup", function () {
+            renderPreview();
+        });
+        renderPreview();
+    });
+
+</script>
+

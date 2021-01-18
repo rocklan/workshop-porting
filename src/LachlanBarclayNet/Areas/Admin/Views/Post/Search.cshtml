@@ -1,0 +1,50 @@
+﻿@model AdminSearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Post Search</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.TextBoxFor(x => x.SearchString)
+        <input type="submit" />
+    </div>
+    <br /><br />
+    
+    <table style="width: 100%">
+        <tr>
+            <th width="200px">
+                Display Date
+            </th>
+            <th width="100px">
+                Post Type
+            </th>
+            <th>
+                Post
+            </th>
+            <th width="150px"></th>
+        </tr>
+
+        @foreach (var item in Model.Posts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostType.PostTypeName)
+                </td>
+                <td>
+                    @Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostID })
+                </td>
+                <td>
+                    @Html.ActionLink("Preview", "Details", new { id = item.PostID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                </td>
+            </tr>
+        }
+    </table>
+}

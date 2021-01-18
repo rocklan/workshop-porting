@@ -1,0 +1,88 @@
+﻿@model LachlanBarclayNet.ViewModel.IndexContactViewModel
+@{
+    ViewBag.Title = "Contact Me";
+    ViewBag.MenuItemClass4 = "active";
+}
+
+<style type="text/css">
+    .field-validation-error {
+        color: Red;
+    }
+
+    #Message {
+        height: 200px;
+    }
+</style>
+
+@if (Model != null && Model.EmailSent)
+{
+    <div>
+        Thanks for your message, I'll get back to you soon.
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Name</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", maxlength = "20" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", maxlength = "100" })
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Message)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <input type="hidden" id="recaptchaToken" name="recaptchaToken" />
+                @Html.ValidationMessageFor(x => x.RecaptchaToken)
+                <input type="submit" class="button" value="submit" />
+            </div>
+        </div>
+    }
+}
+<br />
+<br />
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LcXR7YUAAAAAE6nqXPB-qU3l1zbbJ0euxChJDTV"></script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-2382034-1', 'auto');
+    ga('send', 'pageview');
+
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LcXR7YUAAAAAE6nqXPB-qU3l1zbbJ0euxChJDTV',
+            { action: 'contact' }).then(function (token) {
+                  $("#recaptchaToken").val(token);
+         
+        });
+    });
+</script>

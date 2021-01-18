@@ -1,0 +1,61 @@
+﻿@model LachlanBarclayNet.DAO.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostText)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostText)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostType.PostTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostType.PostTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostUrl)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

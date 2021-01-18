@@ -1,0 +1,29 @@
+﻿@model AdminImgViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Img links</h2>
+
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Fixed</th>
+    </tr>
+    @foreach (var post in Model.Posts)
+    {
+    <tr>
+        <td><a href="/Admin/Post/Edit/@post.PostID">@post.PostTitle</a></td>
+        <td>
+            @foreach (var img in post.images)
+            {
+            <div>
+                @img.Img <br />
+            </div>
+            }
+
+        </td>
+    </tr>
+    }
+</table>

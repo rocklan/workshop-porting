@@ -1,0 +1,7 @@
+*.user
+packages
+obj
+bin
+.vs
+connectionstrings.config
+/src/LachlanBarclayNet/web.secrets.config

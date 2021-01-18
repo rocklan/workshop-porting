@@ -1,0 +1,52 @@
+﻿@model AdminIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+<table>
+    <tr>
+        <th width="200px">
+            Display Date</th>
+        <th>Published</th>
+        <th width="100px">
+            Post Type</th>
+        <th>
+            Post
+        </th>
+        <th width="250px"></th>
+    </tr>
+
+@foreach (var item in Model.Posts) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PostDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Published)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PostType.PostTypeName)
+    </td>
+    <td>
+        @Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostID })
+    </td>
+    <td>
+        @Html.ActionLink("Preview", "Details", new { id = item.PostID }, new { style = "margin-right: 10px" })
+        @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { style = "margin-right: 10px" })
+        <a target="_blank" href="@item.FriendlyUrl">Link</a>
+    </td>
+</tr>
+}
+
+</table>
+<br />
+<br />
+<li><a href="@Url.Action("Index", "Post", new { area="Admin", from = Model.FromString }) ">Next</a></li>
+
+<br />

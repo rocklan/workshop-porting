@@ -1,0 +1,56 @@
+﻿@model LachlanBarclayNet.ViewModel.IndexBlogViewModel
+
+@{
+    if (Model.Category == null)
+    {
+        ViewBag.MenuItemClass1 = "active";
+        ViewBag.Title = "Lachlan (Rocklan) Barclay's Blog";
+        ViewBag.Description = "Lachlan's blog, covering programming, guitars and more programming and more guitars.";
+    }
+    if (Model.Category == "technical")
+    {
+        ViewBag.MenuItemClass2 = "active";
+        ViewBag.Title = "Lachlan (Rocklan) Barclay's Tech Blog";
+        ViewBag.Description = "Lachlan's tech blog, covering programming, programming and more programming.";
+    }
+    if (Model.Category == "music")
+    {
+        ViewBag.MenuItemClass3 = "active";
+        ViewBag.Description = "Lachlan's music blog, covering guitars, music, guitars and more guitars.";
+    }
+    if (ViewBag.Title == "Contact Me")
+    {
+        ViewBag.MenuItemClass4 = "active";
+        ViewBag.Description = "Contact Lachlan (Rocklan) Barclay";
+    }
+}
+
+@foreach (Post post in Model.Posts)
+{
+    <div class="blog-post">
+        <h2 class="blog-post-title">
+            <a href="~/@post.PostDate.Year/@post.PostDate.Month.ToString("00")/@post.PostUrl">@post.PostTitle</a>
+        </h2>
+        <p class="blog-post-meta">@post.PostDate.ToNiceDate()</p>
+        @if (post.PostText.Length > 1500)
+        {
+            @Html.Raw(post.PostText.Substring(0, 1500))<span>...</span>
+        }
+        else
+        {
+            @Html.Raw(post.PostText)
+        }
+        <br /><a class="btn btn-primary" href="~/@post.PostDate.Year/@post.PostDate.Month.ToString("00")/@post.PostUrl">Read More -></a>
+
+    </div>
+}
+
+@if (Model.NextButtonSearchParams != null)
+{
+    <nav>
+        <ul class="pager">
+            <li><a href="~/search?@Model.NextButtonSearchParams">Next</a></li>
+        </ul>
+    </nav>
+}
+

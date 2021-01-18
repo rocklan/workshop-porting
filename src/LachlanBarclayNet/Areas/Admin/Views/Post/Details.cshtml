@@ -1,0 +1,21 @@
+﻿@model LachlanBarclayNet.DAO.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Preview</h2>
+
+
+    <h2 style="margin-bottom: 0px;font-size: 24pt">@Model.PostTitle</h2>
+    
+    <span style="color: gray">@Model.PostDate</span>
+    <br /><br />
+
+    @Html.Raw(Model.PostText)
+    
+<br /><br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
