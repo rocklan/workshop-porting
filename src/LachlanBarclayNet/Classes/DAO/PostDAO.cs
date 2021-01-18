@@ -127,39 +127,6 @@ namespace LachlanBarclayNet.DAO
             }
         }
 
-        public List<PostDataDTO> GetForYearCached(int id)
-        {
-            string key = $"Year.{id}";
-
-            var posts = (List<PostDataDTO>)MemoryCache.Default.Get(key);
-            if (posts == null)
-            {
-                using (LbNet context = new LbNet())
-                {
-                    posts = context
-                       .Posts
-                       .Where(x => x.PostDate.Year == id)
-                       .Select(x => new
-                       {
-                           x.PostID,
-                           x.PostTitle,
-                           x.PostUrl,
-                           x.PostDate
-                       })
-                       .AsEnumerable()
-                       .Select(x => new PostDataDTO
-                       {
-                           PostID = x.PostID,
-                           PostTitle = x.PostTitle,
-                           PostUrl = x.PostDate.Year + "/" + x.PostDate.Month.ToString("00") + "/" + x.PostUrl
-                       })
-                       .ToList();
-
-                    MemoryCache.Default.Add(key, posts, new CacheItemPolicy { AbsoluteExpiration = DateTimeOffset.UtcNow.AddHours(24) });
-                }
-            }
-            return posts;
-        }
 
         public List<PostType> GetTypes()
         {
@@ -209,13 +176,6 @@ namespace LachlanBarclayNet.DAO
                 context.SaveChanges();
             }
         }
-    }
-
-    public class PostDataDTO
-    {
-        public int PostID { get; set; }
-        public string PostTitle { get; set; }
-        public string PostUrl { get; set; }
     }
 
 }
