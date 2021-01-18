@@ -376,6 +376,7 @@
     <Compile Include="Classes\Common\Extensions.cs" />
     <Compile Include="Classes\Common\PostData.cs" />
     <Compile Include="Classes\Common\YearPost.cs" />
+    <Compile Include="Classes\DAO\PostDataDTO.cs" />
     <Compile Include="Classes\DbModel\LbNet.cs" />
     <Compile Include="Classes\DbModel\Post.cs" />
     <Compile Include="Classes\DbModel\PostComment.cs" />

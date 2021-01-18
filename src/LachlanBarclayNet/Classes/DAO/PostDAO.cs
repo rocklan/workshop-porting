@@ -55,8 +55,8 @@ namespace LachlanBarclayNet.DAO
                                 (category == null || x.PostType.PostTypeName == category))
                     .OrderByDescending(x => x.PostDate)
                     .Take(limit)
-                    .ToList().
-                    Select(x => MapPost(x))
+                    .ToList()
+                    .Select(x => MapPost(x))
                     .ToList();
             }
         }
