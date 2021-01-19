@@ -11,7 +11,7 @@ namespace LachlanBarclayNet.DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PostType()
         {
-            Posts = new HashSet<Post>();
+            Posts = new HashSet<PostOld>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -22,7 +22,7 @@ namespace LachlanBarclayNet.DAO
         public string PostTypeName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<PostOld> Posts { get; set; }
 
     }
 }

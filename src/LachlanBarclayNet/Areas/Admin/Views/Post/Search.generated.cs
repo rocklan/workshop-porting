@@ -147,7 +147,7 @@ WriteLiteral("                    ");
 
             
             #line 41 "..\..\Areas\Admin\Views\Post\Search.cshtml"
-               Write(Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostID }));
+               Write(Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostId }));
 
             
             #line default
@@ -158,7 +158,7 @@ WriteLiteral("                    ");
 
             
             #line 44 "..\..\Areas\Admin\Views\Post\Search.cshtml"
-               Write(Html.ActionLink("Preview", "Details", new { id = item.PostID }));
+               Write(Html.ActionLink("Preview", "Details", new { id = item.PostId }));
 
             
             #line default
@@ -169,7 +169,7 @@ WriteLiteral("                    ");
 
             
             #line 45 "..\..\Areas\Admin\Views\Post\Search.cshtml"
-               Write(Html.ActionLink("Delete", "Delete", new { id = item.PostID }));
+               Write(Html.ActionLink("Delete", "Delete", new { id = item.PostId }));
 
             
             #line default

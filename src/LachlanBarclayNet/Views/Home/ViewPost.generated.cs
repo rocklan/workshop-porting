@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Home/ViewPost.cshtml")]
-    public partial class _Views_Home_ViewPost_cshtml : System.Web.Mvc.WebViewPage<Post>
+    public partial class _Views_Home_ViewPost_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Standard.Post>
     {
         public _Views_Home_ViewPost_cshtml()
         {
@@ -100,7 +100,7 @@ WriteLiteral("\r\n\r\n");
             #line hidden
             
             #line 14 "..\..\Views\Home\ViewPost.cshtml"
-     if (Model.PostComments.Count > 0)
+     if (Model.PostComment.Count > 0)
     {
 
             
@@ -110,7 +110,7 @@ WriteLiteral("        <hr />\r\n");
 
             
             #line 17 "..\..\Views\Home\ViewPost.cshtml"
-        foreach (var comment in Model.PostComments)
+        foreach (var comment in Model.PostComment)
         {
 
             
@@ -186,7 +186,7 @@ WriteLiteral(">\r\n        var disqus_shortname = \'metaltheater\'; \r\n        
 
             
             #line 31 "..\..\Views\Home\ViewPost.cshtml"
-                            Write(Model.PostID);
+                            Write(Model.PostId);
 
             
             #line default

@@ -16,7 +16,8 @@ namespace LachlanBarclayNet.Tests
     public class HomeControllerTests
     {
 
-        private readonly Post _testPost = new Post {
+        private readonly LachlanBarclayNet.DAO.Standard.Post _testPost = new LachlanBarclayNet.DAO.Standard.Post
+        {
             PostTitle = "test-blog",
             PostText = "post text",
             PostDate = new DateTime(2015, 1, 1),
@@ -40,7 +41,7 @@ namespace LachlanBarclayNet.Tests
 
             var actionResult = homeController.ViewPost(2015, 1, "test-blog") as ViewResult;
 
-            Post viewModel = (Post) actionResult.Model;
+            LachlanBarclayNet.DAO.Standard.Post viewModel = (LachlanBarclayNet.DAO.Standard.Post) actionResult.Model;
 
             Assert.IsNotNull(viewModel);
             Assert.AreEqual("post text", viewModel.PostText);

@@ -1,4 +1,4 @@
-﻿@model LachlanBarclayNet.DAO.Post
+﻿@model LachlanBarclayNet.DAO.Standard.Post
 
 @{
     ViewBag.Title = "Details";
@@ -16,6 +16,6 @@
     
 <br /><br />
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PostId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

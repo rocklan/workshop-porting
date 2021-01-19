@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Admin/Views/Post/Delete.cshtml")]
-    public partial class _Areas_Admin_Views_Post_Delete_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Post>
+    public partial class _Areas_Admin_Views_Post_Delete_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Standard.Post>
     {
         public _Areas_Admin_Views_Post_Delete_cshtml()
         {

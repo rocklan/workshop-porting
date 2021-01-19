@@ -7,10 +7,10 @@ namespace LachlanBarclayNet.DAO
     using System.Data.Entity.Spatial;
 
     [Table("Post")]
-    public partial class Post
+    public partial class PostOld
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Post()
+        public PostOld()
         {
             PostComments = new HashSet<PostComment>();
         }

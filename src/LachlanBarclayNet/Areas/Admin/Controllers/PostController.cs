@@ -1,6 +1,8 @@
 ﻿using Base32;
 using LachlanBarclayNet.Areas.Admin.ViewModels;
 using LachlanBarclayNet.DAO;
+using LachlanBarclayNet.DAO.Standard;
+
 using OtpSharp;
 using System;
 using System.Collections.Generic;
@@ -24,7 +26,7 @@ namespace LachlanBarclayNet.Areas.Admin.Controllers
         public ActionResult Search()
         {
             AdminSearchViewModel ViewModel = new AdminSearchViewModel();
-            ViewModel.Posts = new List<Post>();
+            ViewModel.Posts = new List<LachlanBarclayNet.DAO.Standard.Post>();
             return View(ViewModel);
         }
 
@@ -74,7 +76,7 @@ namespace LachlanBarclayNet.Areas.Admin.Controllers
                     AdminImgPost imgPost = new AdminImgPost
                     {
                         images = new List<AdminImgPostImg>(),
-                        PostID = post.PostID,
+                        PostID = post.PostId,
                         PostTitle = post.PostTitle
                     };
 
@@ -163,7 +165,7 @@ namespace LachlanBarclayNet.Areas.Admin.Controllers
                 post = new Post();
                 post.PostDate = DateTime.Now;
             }
-            ViewBag.PostTypeID = CreatePostTypeSelectList(post.PostTypeID);
+            ViewBag.PostTypeID = CreatePostTypeSelectList(post.PostTypeId);
             ViewBag.action = TempData["action"];
             return View(post);
         }
@@ -185,7 +187,7 @@ namespace LachlanBarclayNet.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 PostDAO postDAO = new PostDAO();
-                if (post.PostID > 0)
+                if (post.PostId > 0)
                 {
                     postDAO.Update(post);
                     TempData["action"] = "post updated";
@@ -200,9 +202,9 @@ namespace LachlanBarclayNet.Areas.Admin.Controllers
                     postDAO.Insert(post);
                     TempData["action"] = "post created";
                 }
-                return RedirectToAction("Edit", new { id = post.PostID });
+                return RedirectToAction("Edit", new { id = post.PostId });
             }
-            ViewBag.PostTypeID = CreatePostTypeSelectList(post.PostTypeID);
+            ViewBag.PostTypeID = CreatePostTypeSelectList(post.PostTypeId);
             return View(post);
         }
 

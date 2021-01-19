@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Admin/Views/Post/Edit.cshtml")]
-    public partial class _Areas_Admin_Views_Post_Edit_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Post>
+    public partial class _Areas_Admin_Views_Post_Edit_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Standard.Post>
     {
         public _Areas_Admin_Views_Post_Edit_cshtml()
         {
@@ -196,7 +196,7 @@ WriteLiteral("        ");
 
             
             #line 46 "..\..\Areas\Admin\Views\Post\Edit.cshtml"
-   Write(Html.ValidationMessageFor(model => model.PostTypeID));
+   Write(Html.ValidationMessageFor(model => model.PostTypeId));
 
             
             #line default
@@ -294,7 +294,7 @@ WriteLiteral("\r\n    </div>\r\n");
             #line hidden
             
             #line 65 "..\..\Areas\Admin\Views\Post\Edit.cshtml"
-Write(Html.HiddenFor(model => model.PostID));
+Write(Html.HiddenFor(model => model.PostId));
 
             
             #line default

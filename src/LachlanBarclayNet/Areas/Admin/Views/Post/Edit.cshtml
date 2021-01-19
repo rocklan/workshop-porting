@@ -1,4 +1,4 @@
-﻿@model LachlanBarclayNet.DAO.Post
+﻿@model LachlanBarclayNet.DAO.Standard.Post
 
 @{
                 /**/
@@ -43,7 +43,7 @@
     </div>
     <div class="editor-field">
         @Html.DropDownList("PostTypeID", String.Empty)
-        @Html.ValidationMessageFor(model => model.PostTypeID)
+        @Html.ValidationMessageFor(model => model.PostTypeId)
     </div>
 
     <div class="editor-label">
@@ -62,7 +62,7 @@
         @Html.ValidationMessageFor(model => model.PostDescription)
     </div>
 
-    @Html.HiddenFor(model => model.PostID)
+    @Html.HiddenFor(model => model.PostId)
 
     <div class="editor-label">
         Friendly URL

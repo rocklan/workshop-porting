@@ -8,7 +8,7 @@ namespace LachlanBarclayNet.Areas.Admin.ViewModels
 {
     public class AdminSearchViewModel
     {
-        public List<Post> Posts { get; set; }
+        public List<LachlanBarclayNet.DAO.Standard.Post> Posts { get; set; }
         public string SearchString { get; set; }
     }
 }

@@ -38,11 +38,11 @@
                     @Html.DisplayFor(modelItem => item.PostType.PostTypeName)
                 </td>
                 <td>
-                    @Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostID })
+                    @Html.ActionLink(item.PostTitle, "Edit", new { id = item.PostId })
                 </td>
                 <td>
-                    @Html.ActionLink("Preview", "Details", new { id = item.PostID })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                    @Html.ActionLink("Preview", "Details", new { id = item.PostId })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostId })
                 </td>
             </tr>
         }

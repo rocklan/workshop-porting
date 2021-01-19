@@ -1,13 +1,7 @@
-namespace LachlanBarclayNet.DAO
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Configuration;
-    using System.Data.Entity.Spatial;
+using System.Configuration;
 
-    
+namespace LachlanBarclayNet.DAO.Standard
+{
     public partial class Post
     {
         public string FriendlyUrl

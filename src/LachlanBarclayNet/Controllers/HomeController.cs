@@ -52,7 +52,16 @@ namespace LachlanBarclayNet.Controllers
             if (postToView == null)
                 return HttpNotFound();
 
-            if (!postToView.Published && !User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
+            {
+                if (postToView.Published == null)
+                    return HttpNotFound();
+
+                if (postToView.Published.HasValue && !postToView.Published.Value)
+                    return HttpNotFound();
+            }
+
+            if (postToView.Published == null  && !User.Identity.IsAuthenticated)
                 return HttpNotFound();
 
             return View(postToView);

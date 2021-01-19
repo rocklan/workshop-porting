@@ -23,6 +23,6 @@ namespace LachlanBarclayNet.DAO
 
         public int? PostID { get; set; }
 
-        public virtual Post Post { get; set; }
+        public virtual PostOld Post { get; set; }
     }
 }

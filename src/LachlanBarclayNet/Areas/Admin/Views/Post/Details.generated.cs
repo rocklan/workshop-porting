@@ -33,7 +33,7 @@ namespace ASP
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Admin/Views/Post/Details.cshtml")]
-    public partial class _Areas_Admin_Views_Post_Details_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Post>
+    public partial class _Areas_Admin_Views_Post_Details_cshtml : System.Web.Mvc.WebViewPage<LachlanBarclayNet.DAO.Standard.Post>
     {
         public _Areas_Admin_Views_Post_Details_cshtml()
         {
@@ -91,7 +91,7 @@ WriteLiteral("    ");
 
             
             #line 19 "..\..\Areas\Admin\Views\Post\Details.cshtml"
-Write(Html.ActionLink("Edit", "Edit", new { id=Model.PostID }));
+Write(Html.ActionLink("Edit", "Edit", new { id=Model.PostId }));
 
             
             #line default
