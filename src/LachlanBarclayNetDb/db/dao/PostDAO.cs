@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.Entity;
+
 using System.Linq;
-using System.Runtime.Caching;
+
 using System.Web;
 
 using LachlanBarclayNet.DAO.Standard;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace LachlanBarclayNet.DAO
 {
@@ -66,7 +68,7 @@ namespace LachlanBarclayNet.DAO
             {
                 return context
                     .Post
-                    .Include("PostType")
+                    .Include(x => x.PostType)
                     .Where(x => (SearchString == null || x.PostText.Contains(SearchString)) &&
                                 (SearchFromDate == null || x.PostDate <= SearchFromDate))
                     .OrderByDescending(x => x.PostDate)
@@ -81,7 +83,7 @@ namespace LachlanBarclayNet.DAO
             {
                 return context
                         .Post
-                        .Include("PostType")
+                        .Include(x => x.PostType)
                         .FirstOrDefault(x => x.PostId == PostID);
             }
         }
@@ -92,7 +94,7 @@ namespace LachlanBarclayNet.DAO
             {
                 return context
                         .Post
-                        .Include("PostComments")
+                        .Include(x => x.PostComment)
                         .FirstOrDefault(x => x.PostDate.Year == Year && x.PostDate.Month == Month && x.PostUrl == Title);
 
             }

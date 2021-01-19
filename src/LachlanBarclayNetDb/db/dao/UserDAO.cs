@@ -1,14 +1,14 @@
-﻿using Base32;
-using LachlanBarclayNet.Areas.Admin.Controllers;
+﻿using LachlanBarclayNet.Areas.Admin.Controllers;
 using LachlanBarclayNet.DAO.Standard;
 
-using OtpSharp;
+using OtpNet;
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Runtime.Caching;
+
 using System.Web;
 
 namespace LachlanBarclayNet.DAO
@@ -43,7 +43,7 @@ namespace LachlanBarclayNet.DAO
                 return true;
 
             long timeStepMatched = 0;
-            byte[] decodedKey = Base32Encoder.Decode(actualQrCode);
+            byte[] decodedKey = Base32Encoding.ToBytes(actualQrCode);
             var otp = new Totp(decodedKey);
 
             return otp.VerifyTotp(suppliedQrCode, out timeStepMatched, new VerificationWindow(2, 2));
@@ -84,7 +84,7 @@ namespace LachlanBarclayNet.DAO
             }
         }
 
-        internal void SetQrCode(string username, string secretKey)
+        public void SetQrCode(string username, string secretKey)
         {
             using (lachlanbarclaynet2Context context = GetContext())
             {

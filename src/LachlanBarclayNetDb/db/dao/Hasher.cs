@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System;
+﻿using System;
 using System.Linq;
 using System.Security.Cryptography;
+
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace LachlanBarclayNet.Areas.Admin.Controllers
 {

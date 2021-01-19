@@ -16,22 +16,20 @@ namespace LachlanBarclayNet.Controllers
         [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult Index()
         {
-            using (LbNet context = new LbNet())
+            PostDAO postDAO = new PostDAO();
+            var posts = postDAO.GetAllLivePosts();
+
+            SitemapIndexViewModel ViewModel = new SitemapIndexViewModel
             {
-                PostDAO postDAO = new PostDAO();
-                var posts = postDAO.GetAllLivePosts();
+                Urls = posts.Select(x => new SitemapUrl { Url = x.FullUrl }).ToList()
+            };
 
-                SitemapIndexViewModel ViewModel = new SitemapIndexViewModel
-                {
-                    Urls = posts.Select(x => new SitemapUrl { Url = x.FullUrl }).ToList()
-                };
-
-                AddUrl(ViewModel, "contact");
+            AddUrl(ViewModel, "contact");
                 
-                Response.ContentType = "application/xml";
+            Response.ContentType = "application/xml";
 
-                return View(ViewModel);
-            }
+            return View(ViewModel);
+            
         }
 
         private void AddUrl(SitemapIndexViewModel ViewModel, string uri)
