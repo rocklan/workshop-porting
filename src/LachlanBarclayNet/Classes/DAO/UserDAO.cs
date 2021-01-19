@@ -1,8 +1,11 @@
 ﻿using Base32;
 using LachlanBarclayNet.Areas.Admin.Controllers;
+using LachlanBarclayNet.DAO.Standard;
+
 using OtpSharp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Runtime.Caching;
@@ -12,9 +15,15 @@ namespace LachlanBarclayNet.DAO
 {
     public class UserDAO
     {
+        private lachlanbarclaynet2Context GetContext()
+        {
+            return new lachlanbarclaynet2Context(
+                ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString);
+        }
+
         public void SetPassword(string username, string password)
         {
-            using (LbNet context = new LbNet())
+            using (lachlanbarclaynet2Context context = GetContext())
             {
                 var u = context.Users.First(x => x.Username == username);
                 u.Password = password;
@@ -42,7 +51,7 @@ namespace LachlanBarclayNet.DAO
 
         public bool Verify(string username, string password, string qrcode)
         {
-            using (LbNet context = new LbNet())
+            using (lachlanbarclaynet2Context context = GetContext())
             {
                 var u = context.Users.First(x => x.Username == username);
 
@@ -77,7 +86,7 @@ namespace LachlanBarclayNet.DAO
 
         internal void SetQrCode(string username, string secretKey)
         {
-            using (LbNet context = new LbNet())
+            using (lachlanbarclaynet2Context context = GetContext())
             {
                 var u = context.Users.First(x => x.Username == username);
 

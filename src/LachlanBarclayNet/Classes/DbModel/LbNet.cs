@@ -15,7 +15,7 @@ namespace LachlanBarclayNet.DAO
         public virtual DbSet<PostOld> Posts { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
         public virtual DbSet<PostType> PostTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserOld> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

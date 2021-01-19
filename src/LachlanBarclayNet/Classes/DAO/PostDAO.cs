@@ -18,6 +18,7 @@ namespace LachlanBarclayNet.DAO
             return new lachlanbarclaynet2Context(
                 ConfigurationManager.ConnectionStrings["LbNet"].ConnectionString);
         }
+
         public List<LachlanBarclayNet.DAO.Standard.Post> GetAll()
         {
             using (lachlanbarclaynet2Context context = GetContext())

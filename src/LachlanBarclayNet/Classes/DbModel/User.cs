@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Users")]
-    public partial class User
+    public partial class UserOld
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
