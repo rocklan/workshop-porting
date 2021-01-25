@@ -395,7 +395,6 @@
     <Compile Include="Classes\DTO\WordDataDTO.cs" />
     <Compile Include="Classes\Tests\HomeControllerTests.cs" />
     <Compile Include="Classes\ViewModel\IndexContactViewModel.cs" />
-    <Compile Include="Classes\ViewModel\SitemapIndexViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
