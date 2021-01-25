@@ -9,7 +9,7 @@ namespace LachlanBarclayNet.Controllers
 {
     public class SitemapController : Controller
     {
-        [System.Web.Mvc.Route("sitemap.xml")]
+        [Route("sitemap.xml")]
         [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult Index()
         {
