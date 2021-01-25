@@ -387,7 +387,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Classes\Interfaces\IIdentityLogic.cs" />
-    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Classes\Common\RecaptchaApi.cs" />
     <Compile Include="Classes\DTO\LanguageDataDTO.cs" />
     <Compile Include="Classes\DTO\PersonDataDTO.cs" />
@@ -425,11 +424,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_Layout.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Sitemap\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
@@ -587,10 +581,6 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>ViewPost.generated.cs</LastGenOutput>
     </Content>
-    <None Include="Views\Sitemap\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </None>
     <Content Include="Views\Contact\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>

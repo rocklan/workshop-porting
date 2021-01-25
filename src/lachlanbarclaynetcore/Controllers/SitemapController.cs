@@ -3,14 +3,14 @@ using LachlanBarclayNet.ViewModel;
 
 using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LachlanBarclayNet.Controllers
 {
     public class SitemapController : Controller
     {
         [Route("sitemap.xml")]
-        [OutputCache(Duration = 3600, VaryByParam = "none")]
+        [ResponseCache(Duration = 3600, VaryByQueryKeys = new[] { "none" })]
         public ActionResult Index()
         {
             PostDAO postDAO = new PostDAO();
