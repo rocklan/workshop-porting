@@ -2,47 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - lachlanbarclaynetcore</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta property='og:title' content='@ViewBag.Title' />
+    <meta property='og:description' content='@ViewBag.Description' />
+
+	<environment include="Development">
+        @Html.StyleBundles("~/Content/sitebundle.min.css")
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/Content/sitebundle.min.css" asp-append-version="true" />
+    </environment>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">lachlanbarclaynetcore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <div class="blog-masthead">
+        
         <div class="container">
-            &copy; 2021 - lachlanbarclaynetcore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <h1 class="blog-title"><a href="~/">Lachlan (Rocklan) Barclay's Blog</a></h1>
+            <nav class="blog-nav" style="float: right;">
+                <a class="btn btn-primary @ViewBag.MenuItemClass1" href="~/">Home</a>
+                <a class="btn btn-primary @ViewBag.MenuItemClass2" href="~/search?category=technical">Tech</a>
+                <a class="btn btn-primary @ViewBag.MenuItemClass3" href="~/search?category=music">Music</a>
+                <a class="btn btn-primary @ViewBag.MenuItemClass4" href="~/contact">Contact</a>
+            </nav>
         </div>
+    </div>
+    <br />
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                @RenderBody()   
+            </div>
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset" id="Sidebar1">
+                    <img src="/pics/headshot.jpg" class="img-responsive headshot" alt='lachlan barclay' />
+                    <p>Hi, I'm Lachlan B, aka <a target="_blank" href="https://twitter.com/rocklan">rocklan</a>. I'm the rockstar developer.</p>
+                    <ol class="list-unstyled">
+                        <li><a target="_blank" href="https://twitter.com/rocklan">my twitter</a></li>
+                        <li><a target="_blank" href="https://youtube.com/VoiceOfApollo">my videos</a></li>
+                        <li><a target="_blank" href="https://lachlanbarclay.bandcamp.com">my music</a></li>
+                    </ol>
+                </div>
+
+                <div class="sidebar-module sidebar-module-inset" id="Sidebar5">
+                    <h4>Popular articles</h4>
+                    <ol class="list-unstyled" id="populararticles">
+                        <li> <a href="~/2016/08/automated-build-with-gitlab-and-jenkins">Automated build with Gitlab and Jenkins</a></li>
+                        <li> <a href="~/2016/02/asp-dot-net-two-factor-auth-with-google-authenticator-app">Two Factor Auth with Google's Authenticator App in  ASP.NET </a></li>
+                        <li> <a href="~/2015/08/how-to-be-the-best-developer-in-the-world">How to be the best developer in the world</a></li>
+                        <li> <a href="~/2011/01/friendly-urls-in-classic-asp">Friendly URLs in classic ASP</a></li>
+                        <li> <a href="~/2017/05/electron-app-vs-native-winforms-app">Electron app vs native winforms app</a></li>
+                        <li> <a href="~/2015/03/moving-from-classic-asp-to-mvc5">Moving from classic asp to mvc5</a></li>
+                        <li> <a href="~/2015/03/generating-barcodes-with-zen-barcode-generator">Generating barcodes with zen barcode generator</a></li>
+                    </ol>
+                </div>
+
+
+                <div class="sidebar-module sidebar-module-inset" id="Sidebar3">
+                    <h4>Tech Blogs</h4>
+                    <ol class="list-unstyled">
+                        @Html.TechArchive(1)
+                    </ol>
+                </div>
+
+                <div class="sidebar-module sidebar-module-inset" id="Sidebar4">
+                    <h4>Music Blogs</h4>
+                    <ol class="list-unstyled">
+                        @Html.TechArchive(2)
+                    </ol>
+                </div>
+
+
+            </div><!-- /.blog-sidebar -->
+        </div>
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+        <p>Hey you've read this far! You're officially cool! Send me an email to claim your prize!</p>
+        <p>
+        <a href="#">Back to top</a>
+        </p>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/powershell.min.js"></script>
+
+     <environment include="Development">
+        @Html.ScriptBundles("~/Scripts/sitebundle.min.js")
+    </environment>
+    <environment exclude="Development">
+        <script src="~/Scripts/sitebundle.min.js" asp-append-version="true" ></script>
+    </environment>
+
+    </body>
 </html>

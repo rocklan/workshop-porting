@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "wwwroot/Scripts/sitebundle.min.js",
+    "inputFiles": [
+      "wwwroot/Scripts/jquery-3.4.1.js",
+      "wwwroot/Scripts/bootstrap.js",
+      "wwwroot/Scripts/highlight.pack.js",
+      "wwwroot/Scripts/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/Content/sitebundle.min.css",
+    "inputFiles": [
+      "wwwroot/Content/bootstrap.css",
+      "wwwroot/Content/highlightjs-default.css",
+      "wwwroot/Content/solarized_dark.css",
+      "wwwroot/Content/site.css"
+    ]
+  }
+]

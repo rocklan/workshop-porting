@@ -20,8 +20,8 @@ namespace LachlanBarclayNet
                "~/Content/bootstrap.css",
                "~/Content/highlightjs-default.css",
                "~/Content/solarized_dark.css",
-                "~/Content/site.css"
-                ));
+               "~/Content/site.css"
+            ));
 
             
         }
