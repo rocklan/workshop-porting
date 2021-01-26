@@ -386,13 +386,11 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Classes\Interfaces\IIdentityLogic.cs" />
-    <Compile Include="Classes\Common\RecaptchaApi.cs" />
     <Compile Include="Classes\DTO\LanguageDataDTO.cs" />
     <Compile Include="Classes\DTO\PersonDataDTO.cs" />
     <Compile Include="Classes\DTO\PersonWordAudioDTO.cs" />
     <Compile Include="Classes\DTO\WordDataDTO.cs" />
     <Compile Include="Classes\Tests\HomeControllerTests.cs" />
-    <Compile Include="Classes\ViewModel\IndexContactViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

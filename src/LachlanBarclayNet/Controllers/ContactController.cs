@@ -27,7 +27,7 @@ namespace LachlanBarclayNet.Controllers
                 return RedirectToAction("Index");
 
             RecaptchaApi recaptchaApi = new RecaptchaApi();
-            RecaptureResult recaptureResult = await recaptchaApi.RecaptchaIsOkAsync(ViewModel.RecaptchaToken);
+            RecaptureResult recaptureResult = await recaptchaApi.RecaptchaIsOkAsync(ViewModel.RecaptchaToken, GetRemoteIp());
 
             if (!recaptureResult.Success)
                 ModelState.AddModelError("RecaptchaToken", $"Invalid recapture: {recaptureResult.Errors}");
@@ -41,6 +41,7 @@ namespace LachlanBarclayNet.Controllers
 
             return View(ViewModel);
         }
+
 
         private async Task SendEmailAsync(IndexContactViewModel ViewModel, decimal BotScore)
         {
@@ -65,6 +66,20 @@ namespace LachlanBarclayNet.Controllers
             await client.SendEmailAsync(msg);
         }
 
+        private string GetRemoteIp()
+        {
+            System.Web.HttpContext context = System.Web.HttpContext.Current;
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                    return addresses[0];
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
+        }
     }
 
 }

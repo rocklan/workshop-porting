@@ -13,12 +13,10 @@ namespace LachlanBarclayNet.Controllers
         private readonly string _recaptchaUrl = "https://www.google.com/recaptcha/api/siteverify";
         private readonly string _secret = ConfigurationManager.AppSettings["recaptchaSecretKey"];
 
-        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken)
+        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, string remoteip)
         {
             if (recaptchaToken == null)
                 return new RecaptureResult("Token was empty");
-
-            string remoteip = GetRemoteIp();
 
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["secret"] = _secret;
@@ -36,6 +34,7 @@ namespace LachlanBarclayNet.Controllers
 
             try
             {
+                
                 var objectResponse = JsonConvert.DeserializeObject<RecaptureResponseDTO>(txtResponse);
 
                 if (!objectResponse.Success)
@@ -59,20 +58,7 @@ namespace LachlanBarclayNet.Controllers
             }
         }
 
-        private string GetRemoteIp()
-        {
-            System.Web.HttpContext context = System.Web.HttpContext.Current;
-            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (!string.IsNullOrEmpty(ipAddress))
-            {
-                string[] addresses = ipAddress.Split(',');
-                if (addresses.Length != 0)
-                    return addresses[0];
-            }
-
-            return context.Request.ServerVariables["REMOTE_ADDR"];
-        }
+    
 
         private class RecaptureResponseDTO
         {
