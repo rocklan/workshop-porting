@@ -382,7 +382,6 @@
     <Compile Include="Areas\Admin\ViewModels\LoginIndexViewModel.cs" />
     <Compile Include="Classes\Common\Extensions.cs" />
     <Compile Include="Classes\Common\PostData.cs" />
-    <Compile Include="Classes\Common\YearPost.cs" />
     <Compile Include="Classes\DAO\PostDataDTO.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
