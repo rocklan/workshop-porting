@@ -29,7 +29,8 @@ namespace LachlanBarclayNet.Controllers
 
             RecaptureResult recaptureResult = await recaptchaApi.RecaptchaIsOkAsync(
                 ViewModel.RecaptchaToken,
-                new GetRemoteIpFramework());
+                GetRemoteIp()
+            );
 
             if (!recaptureResult.Success)
                 ModelState.AddModelError("RecaptchaToken", $"Invalid recapture: {recaptureResult.Errors}");
@@ -42,6 +43,20 @@ namespace LachlanBarclayNet.Controllers
             }
 
             return View(ViewModel);
+        }
+
+        private string GetRemoteIp()
+        {
+            string ipAddress = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                    return addresses[0];
+            }
+
+            return System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
         }
     }
 

@@ -381,7 +381,6 @@
     <Compile Include="Classes\Common\PostData.cs" />
     <Compile Include="Classes\DAO\PostDataDTO.cs" />
     <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Classes\Common\GetRemoteIpFramework.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Classes\Interfaces\IIdentityLogic.cs" />
     <Compile Include="Classes\DTO\LanguageDataDTO.cs" />

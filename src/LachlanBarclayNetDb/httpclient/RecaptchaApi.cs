@@ -41,7 +41,7 @@ namespace LachlanBarclayNet.Controllers
         }
 
 
-        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, IRemoteIpLookup remoteIpLookup)
+        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, string remoteIp)
         {
             if (recaptchaToken == null)
                 return new RecaptureResult("Token was empty");
@@ -49,7 +49,7 @@ namespace LachlanBarclayNet.Controllers
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["secret"] = _secret;
             query["response"] = recaptchaToken;
-            query["remoteip"] = remoteIpLookup.GetRemoteIp();
+            query["remoteip"] = remoteIp;
             string queryStringEncoded = query.ToString();
 
             string recaptureUrl = $"{_recaptchaUrl}?{queryStringEncoded}";
