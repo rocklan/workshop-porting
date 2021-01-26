@@ -17,7 +17,6 @@ namespace LachlanBarclayNet.Controllers
         private readonly string _recaptchaUrl = "https://www.google.com/recaptcha/api/siteverify";
         private readonly string _secret = ConfigurationManager.AppSettings["recaptchaSecretKey"];
 
-
         public async Task SendEmailAsync(IndexContactViewModel ViewModel, decimal BotScore)
         {
             var from = new EmailAddress("do-not-reply@lachlanbarclay.net");
@@ -42,22 +41,7 @@ namespace LachlanBarclayNet.Controllers
         }
 
 
-
-        public string GetRemoteIp(System.Collections.Specialized.NameValueCollection ServerVariables )
-        {
-            string ipAddress = ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (!string.IsNullOrEmpty(ipAddress))
-            {
-                string[] addresses = ipAddress.Split(',');
-                if (addresses.Length != 0)
-                    return addresses[0];
-            }
-
-            return ServerVariables["REMOTE_ADDR"];
-        }
-
-        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, System.Collections.Specialized.NameValueCollection ServerVariables)
+        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, IRemoteIpLookup remoteIpLookup)
         {
             if (recaptchaToken == null)
                 return new RecaptureResult("Token was empty");
@@ -65,7 +49,7 @@ namespace LachlanBarclayNet.Controllers
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["secret"] = _secret;
             query["response"] = recaptchaToken;
-            query["remoteip"] = GetRemoteIp(ServerVariables);
+            query["remoteip"] = remoteIpLookup.GetRemoteIp();
             string queryStringEncoded = query.ToString();
 
             string recaptureUrl = $"{_recaptchaUrl}?{queryStringEncoded}";

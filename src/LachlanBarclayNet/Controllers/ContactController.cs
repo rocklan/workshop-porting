@@ -5,8 +5,7 @@ using LachlanBarclayNet.ViewModel;
 using LachlanBarclayNet.DAO;
 using System.Configuration;
 using System.Threading.Tasks;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+
 using System.Web;
 
 namespace LachlanBarclayNet.Controllers
@@ -30,7 +29,7 @@ namespace LachlanBarclayNet.Controllers
 
             RecaptureResult recaptureResult = await recaptchaApi.RecaptchaIsOkAsync(
                 ViewModel.RecaptchaToken,
-                System.Web.HttpContext.Current.Request.ServerVariables);
+                new GetRemoteIpFramework());
 
             if (!recaptureResult.Success)
                 ModelState.AddModelError("RecaptchaToken", $"Invalid recapture: {recaptureResult.Errors}");
@@ -44,8 +43,6 @@ namespace LachlanBarclayNet.Controllers
 
             return View(ViewModel);
         }
-
-
     }
 
 }
