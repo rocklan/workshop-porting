@@ -4,16 +4,60 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using LachlanBarclayNet.ViewModel;
+using SendGrid.Helpers.Mail;
+using SendGrid;
 
 namespace LachlanBarclayNet.Controllers
 {
     public class RecaptchaApi
     {
         private static HttpClient _httpClient = new HttpClient();
+
         private readonly string _recaptchaUrl = "https://www.google.com/recaptcha/api/siteverify";
         private readonly string _secret = ConfigurationManager.AppSettings["recaptchaSecretKey"];
 
-        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, string remoteip)
+
+        public async Task SendEmailAsync(IndexContactViewModel ViewModel, decimal BotScore)
+        {
+            var from = new EmailAddress("do-not-reply@lachlanbarclay.net");
+            var to = new EmailAddress("clockwise.music@gmail.com");
+            string subject = "lachlanbarclay.net contact form submission";
+            var plainTextContent = ViewModel.Message;
+
+            var htmlEncoded = HttpUtility.HtmlEncode(ViewModel.Message);
+            var nameEncoded = HttpUtility.HtmlEncode(ViewModel.Name);
+
+            var htmlContent = $"Bot Score: {BotScore}<br /> " +
+                $"From: {nameEncoded}<br />" +
+                $"Email: {ViewModel.Email}<br />" +
+                $"Body: {htmlEncoded}";
+
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+            var apiKey = ConfigurationManager.AppSettings["sendgridapikey"];
+            var client = new SendGridClient(apiKey);
+
+            await client.SendEmailAsync(msg);
+        }
+
+
+
+        public string GetRemoteIp(System.Collections.Specialized.NameValueCollection ServerVariables )
+        {
+            string ipAddress = ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                    return addresses[0];
+            }
+
+            return ServerVariables["REMOTE_ADDR"];
+        }
+
+        public async Task<RecaptureResult> RecaptchaIsOkAsync(string recaptchaToken, System.Collections.Specialized.NameValueCollection ServerVariables)
         {
             if (recaptchaToken == null)
                 return new RecaptureResult("Token was empty");
@@ -21,7 +65,7 @@ namespace LachlanBarclayNet.Controllers
             var query = HttpUtility.ParseQueryString(string.Empty);
             query["secret"] = _secret;
             query["response"] = recaptchaToken;
-            query["remoteip"] = remoteip;
+            query["remoteip"] = GetRemoteIp(ServerVariables);
             string queryStringEncoded = query.ToString();
 
             string recaptureUrl = $"{_recaptchaUrl}?{queryStringEncoded}";
