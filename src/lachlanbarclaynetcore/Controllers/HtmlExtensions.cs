@@ -54,7 +54,7 @@ namespace lachlanbarclaynetcore.Extensions
             for (int i = 0; i < bundles.Count; i++)
                 if (bundles[i].outputFileName == bundleName.Replace("~", "wwwroot"))
                     for (int j = 0; j < bundles[i].inputFiles.Count; j++)
-                        paths.Add(bundles[i].inputFiles[j].ToString().Replace("wwwroot", AppBaseUrl));
+                        paths.Add(bundles[i].inputFiles[j].ToString().Replace("wwwroot", "/" + AppBaseUrl));
 
             return paths;
         }
