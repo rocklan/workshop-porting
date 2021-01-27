@@ -13,6 +13,7 @@ using System.Web;
 
 namespace LachlanBarclayNet.DAO
 {
+
     public class UserDAO
     {
         private lachlanbarclaynet2Context GetContext()

@@ -18,26 +18,18 @@ namespace LachlanBarclayNet.Controllers
             return View();
         }
 
+        [Route("contact")]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<ActionResult> Index(IndexContactViewModel ViewModel)
+        public ActionResult Index(IndexContactViewModel ViewModel)
         {
             if (ViewModel == null)
                 return RedirectToAction("Index");
 
-            RecaptchaApi recaptchaApi = new RecaptchaApi();
-
-            RecaptureResult recaptureResult = await recaptchaApi.RecaptchaIsOkAsync(
-                ViewModel.RecaptchaToken,
-                GetRemoteIp()
-            );
-
-            if (!recaptureResult.Success)
-                ModelState.AddModelError("RecaptchaToken", $"Invalid recapture: {recaptureResult.Errors}");
-
             if (ModelState.IsValid)
             {
-                await recaptchaApi.SendEmailAsync(ViewModel, recaptureResult.BotScore);
+                ContactDAO contactDAO = new ContactDAO();
+                contactDAO.InsertContact(ViewModel.Name, ViewModel.Email, ViewModel.Message);
 
                 ViewModel.EmailSent = true;
             }
@@ -45,19 +37,6 @@ namespace LachlanBarclayNet.Controllers
             return View(ViewModel);
         }
 
-        private string GetRemoteIp()
-        {
-            string ipAddress = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (!string.IsNullOrEmpty(ipAddress))
-            {
-                string[] addresses = ipAddress.Split(',');
-                if (addresses.Length != 0)
-                    return addresses[0];
-            }
-
-            return System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
-        }
     }
 
 }

@@ -22,8 +22,6 @@ namespace LachlanBarclayNet.ViewModel
         public string Message { get; set; }
 
         public bool EmailSent { get; set; }
-
-        [Required]
-        public string RecaptchaToken { get; set; }
+        
     }
 }

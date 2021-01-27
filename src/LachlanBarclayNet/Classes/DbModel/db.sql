@@ -826,3 +826,11 @@ BEGIN
     EXEC sp_addrolemember N'db_owner', N'lachlanbarclaynetuser'
 END;
 GO
+create table Contact
+(
+	ContactID int primary key identity(1,1) not null,
+ [Name] nvarchar(20),
+ Email nvarchar(100),
+ Message nvarchar(1000)
+)
+go

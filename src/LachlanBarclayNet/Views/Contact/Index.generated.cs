@@ -223,25 +223,6 @@ WriteLiteral(" class=\"col-sm-9\"");
 
 WriteLiteral(">\r\n                <input");
 
-WriteLiteral(" type=\"hidden\"");
-
-WriteLiteral(" id=\"recaptchaToken\"");
-
-WriteLiteral(" name=\"recaptchaToken\"");
-
-WriteLiteral(" />\r\n");
-
-WriteLiteral("                ");
-
-            
-            #line 59 "..\..\Views\Contact\Index.cshtml"
-           Write(Html.ValidationMessageFor(x => x.RecaptchaToken));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                <input");
-
 WriteLiteral(" type=\"submit\"");
 
 WriteLiteral(" class=\"button\"");
@@ -251,40 +232,13 @@ WriteLiteral(" value=\"submit\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 63 "..\..\Views\Contact\Index.cshtml"
+            #line 61 "..\..\Views\Contact\Index.cshtml"
     }
 }
 
             
             #line default
             #line hidden
-WriteLiteral("<br />\r\n<br />\r\n\r\n<script");
-
-WriteLiteral(" src=\"https://www.google.com/recaptcha/api.js?render=6LcXR7YUAAAAAE6nqXPB-qU3l1zb" +
-"bJ0euxChJDTV\"");
-
-WriteLiteral(@"></script>
-
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-2382034-1', 'auto');
-    ga('send', 'pageview');
-
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LcXR7YUAAAAAE6nqXPB-qU3l1zbbJ0euxChJDTV',
-            { action: 'contact' }).then(function (token) {
-                  $(""#recaptchaToken"").val(token);
-         
-        });
-    });
-</script>");
-
         }
     }
 }
