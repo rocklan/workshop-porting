@@ -97,7 +97,7 @@ namespace lachlanbarclaynetcore.Extensions
                 sb.Append("<ul>");
                 foreach (var post in sidebarPosts.Where(x => x.PostDate.Year == year))
                 {
-                    string resolvedUrl = AppBaseUrl + "/" + post.FriendlyUrl;
+                    string resolvedUrl = "/" + AppBaseUrl + "/" + post.FriendlyUrl;
 
                     sb.Append("<li>");
                     sb.Append($"<a href='{resolvedUrl}'>{post.PostTitle}</a>");

@@ -1,0 +1,60 @@
+﻿@model LachlanBarclayNet.ViewModel.IndexContactViewModel
+@{
+    ViewBag.Title = "Contact Me";
+    ViewBag.MenuItemClass4 = "active";
+}
+
+<style type="text/css">
+    .field-validation-error {
+        color: Red;
+    }
+
+    #Message {
+        height: 200px;
+    }
+</style>
+
+@if (Model != null && Model.EmailSent)
+{
+    <div>
+        Thanks for your message, I'll get back to you soon.
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Name</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", maxlength = "20" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", maxlength = "100" })
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Message)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <input type="submit" class="button" value="submit" />
+            </div>
+        </div>
+    }
+}

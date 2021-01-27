@@ -1,16 +1,15 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:59686",
-      "sslPort": 0
-    },
     "iis": {
       "applicationUrl": "http://localhost/lachlanbarclaynetcore/",
       "sslPort": 443
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59686",
+      "sslPort": 0
     }
-
   },
   "profiles": {
     "IIS Express": {
@@ -24,11 +23,11 @@
     "lachlanbarclaynetcore": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
     },
     "IIS": {
       "commandName": "IIS",
