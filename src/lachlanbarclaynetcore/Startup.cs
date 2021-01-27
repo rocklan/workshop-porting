@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using LachlanBarclayNet.DAO;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +31,12 @@ namespace lachlanbarclaynetcore
             services.AddControllersWithViews(opt => {
                 opt.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddRazorRuntimeCompilation();
+
+            services.AddTransient<IPostDAO, PostDAO>();
+
+            AppSettings appSettings = new AppSettings();
+            Configuration.Bind(appSettings);
+            services.AddSingleton(appSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,5 +65,10 @@ namespace lachlanbarclaynetcore
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+    }
+
+    public class AppSettings
+    {
+        public int NumberOfPostsOnHomeScreen { get; set; }
     }
 }
