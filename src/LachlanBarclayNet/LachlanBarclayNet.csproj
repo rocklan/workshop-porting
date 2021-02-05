@@ -388,6 +388,7 @@
     <Compile Include="Classes\DTO\PersonWordAudioDTO.cs" />
     <Compile Include="Classes\DTO\WordDataDTO.cs" />
     <Compile Include="Classes\Tests\HomeControllerTests.cs" />
+    <Compile Include="Classes\Session\SessionData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

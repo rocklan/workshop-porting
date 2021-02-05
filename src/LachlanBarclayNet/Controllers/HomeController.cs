@@ -9,6 +9,7 @@ using LachlanBarclayNet.DAO;
 
 namespace LachlanBarclayNet.Controllers
 {
+
     public class HomeController : Controller
     {
         private static readonly int _searchLimit = 10;
@@ -63,6 +64,8 @@ namespace LachlanBarclayNet.Controllers
 
             if (postToView.Published == null  && !User.Identity.IsAuthenticated)
                 return HttpNotFound();
+
+            Session["last-viewed"] = new SessionData { LastRead = DateTime.Now, LastTitle = postToView.PostTitle };
 
             return View(postToView);
         }

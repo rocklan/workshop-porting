@@ -15,6 +15,11 @@ namespace LachlanBarclayNet.Controllers
         [Route("contact")]
         public ActionResult Index()
         {
+            if (Session["last-viewed"] != null)
+            {
+                SessionData sd = (SessionData)Session["last-viewed"];
+                ViewBag.lastviewed = sd;
+            }
             return View();
         }
 

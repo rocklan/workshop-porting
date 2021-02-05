@@ -211,7 +211,52 @@ WriteLiteral("                    ");
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n");
+WriteLiteral("\r\n                </div>\r\n");
+
+            
+            #line 54 "..\..\Views\Contact\Index.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 54 "..\..\Views\Contact\Index.cshtml"
+                   
+                    if (ViewBag.lastviewed != null)
+                    {
+                        LachlanBarclayNet.Controllers.SessionData sd = (LachlanBarclayNet.Controllers.SessionData)Session["last-viewed"];
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                        <p>(BTW if this was about <strong>");
+
+            
+            #line 58 "..\..\Views\Contact\Index.cshtml"
+                                                     Write(sd.LastTitle);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</strong> which you clicked on at ");
+
+            
+            #line 58 "..\..\Views\Contact\Index.cshtml"
+                                                                                                    Write(sd.LastRead);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(" it might be helpful to mention)</p>\r\n");
+
+            
+            #line 59 "..\..\Views\Contact\Index.cshtml"
+                    }
+                
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
 WriteLiteral("        <div");
 
@@ -232,7 +277,7 @@ WriteLiteral(" value=\"submit\"");
 WriteLiteral(" />\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 61 "..\..\Views\Contact\Index.cshtml"
+            #line 68 "..\..\Views\Contact\Index.cshtml"
     }
 }
 
