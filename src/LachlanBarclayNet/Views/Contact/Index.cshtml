@@ -54,7 +54,7 @@ else
                 @{ 
                     if (ViewBag.lastviewed != null)
                     {
-                        LachlanBarclayNet.Controllers.SessionData sd = (LachlanBarclayNet.Controllers.SessionData)Session["last-viewed"];
+                        LachlanBarclayNet.Controllers.SessionData sd = (LachlanBarclayNet.Controllers.SessionData)ViewBag["last-viewed"];
                         <p>(BTW if this was about <strong>@sd.LastTitle</strong> which you clicked on at @sd.LastRead it might be helpful to mention)</p>
                     }
                 }

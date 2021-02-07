@@ -224,7 +224,7 @@ WriteLiteral("\r\n                </div>\r\n");
                    
                     if (ViewBag.lastviewed != null)
                     {
-                        LachlanBarclayNet.Controllers.SessionData sd = (LachlanBarclayNet.Controllers.SessionData)Session["last-viewed"];
+                        LachlanBarclayNet.Controllers.SessionData sd = (LachlanBarclayNet.Controllers.SessionData)ViewBag["last-viewed"];
 
             
             #line default
