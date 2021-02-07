@@ -52,36 +52,45 @@ namespace LachlanBarclayNet.DAO
 
         public bool Verify(string username, string password, string qrcode)
         {
+            string[] names = { "john", "ben", "bob", "rod", "harry" };
+
             using (lachlanbarclaynet2Context context = GetContext())
             {
-                var u = context.Users.First(x => x.Username == username);
+                var u = context.Users.FirstOrDefault(x => x.Username == username);
 
+#if DEBUG
+                u = new Users { };
+#endif 
                 if (u == null)
                     return false;
 
                 if (u.LockedOutUntil.HasValue && u.LockedOutUntil.Value < DateTime.Now)
                     return false;
 
+                bool authPassed = true;
+
 #if RELEASE
-                if (PasswordOk(u.Password, password) && QrCodeOk(u.QrCode, qrcode))
-                {
+                authPassed = (PasswordOk(u.Password, password) && QrCodeOk(u.QrCode, qrcode));
 #endif
+
+                if (authPassed)
+                {
                     u.Attempts = 0;
                     u.LockedOutUntil = null;
-                    context.SaveChanges();
-                    return true;
-#if RELEASE
                 }
-#endif
+                else
+                {
+                    u.Attempts += 1;
 
-                u.Attempts += 1;
+                    if (u.Attempts > 3)
+                        u.LockedOutUntil = DateTime.Now.AddMinutes(5);
+                }
 
-                if (u.Attempts > 3)
-                    u.LockedOutUntil = DateTime.Now.AddMinutes(5);
-
+#if RELEASE
                 context.SaveChanges();
+#endif 
 
-                return false;
+                return authPassed;
             }
         }
 
