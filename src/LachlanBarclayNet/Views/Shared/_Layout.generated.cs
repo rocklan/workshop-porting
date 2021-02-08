@@ -242,10 +242,42 @@ WriteLiteral(" class=\"col-sm-8 blog-main\"");
 
 WriteLiteral(">\r\n");
 
+            
+            #line 32 "..\..\Views\Shared\_Layout.cshtml"
+                
+            
+            #line default
+            #line hidden
+            
+            #line 32 "..\..\Views\Shared\_Layout.cshtml"
+                 if (User.Identity.IsAuthenticated)
+                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    <p>Welcome ");
+
+            
+            #line 34 "..\..\Views\Shared\_Layout.cshtml"
+                          Write(User.Identity.Name);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("!</p>\r\n");
+
+            
+            #line 35 "..\..\Views\Shared\_Layout.cshtml"
+                }
+
+            
+            #line default
+            #line hidden
 WriteLiteral("                ");
 
             
-            #line 32 "..\..\Views\Shared\_Layout.cshtml"
+            #line 36 "..\..\Views\Shared\_Layout.cshtml"
            Write(RenderBody());
 
             
@@ -312,54 +344,54 @@ WriteLiteral(" id=\"populararticles\"");
 
 WriteLiteral(">\r\n                        <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2499), Tuple.Create("\"", 2555)
-, Tuple.Create(Tuple.Create("", 2506), Tuple.Create<System.Object, System.Int32>(Href("~/2016/08/automated-build-with-gitlab-and-jenkins")
-, 2506), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 2647), Tuple.Create("\"", 2703)
+, Tuple.Create(Tuple.Create("", 2654), Tuple.Create<System.Object, System.Int32>(Href("~/2016/08/automated-build-with-gitlab-and-jenkins")
+, 2654), false)
 );
 
 WriteLiteral(">Automated build with Gitlab and Jenkins</a></li>\r\n                        <li> <" +
 "a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2638), Tuple.Create("\"", 2712)
-, Tuple.Create(Tuple.Create("", 2645), Tuple.Create<System.Object, System.Int32>(Href("~/2016/02/asp-dot-net-two-factor-auth-with-google-authenticator-app")
-, 2645), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 2786), Tuple.Create("\"", 2860)
+, Tuple.Create(Tuple.Create("", 2793), Tuple.Create<System.Object, System.Int32>(Href("~/2016/02/asp-dot-net-two-factor-auth-with-google-authenticator-app")
+, 2793), false)
 );
 
 WriteLiteral(">Two Factor Auth with Google\'s Authenticator App in  ASP.NET </a></li>\r\n         " +
 "               <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2816), Tuple.Create("\"", 2874)
-, Tuple.Create(Tuple.Create("", 2823), Tuple.Create<System.Object, System.Int32>(Href("~/2015/08/how-to-be-the-best-developer-in-the-world")
-, 2823), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 2964), Tuple.Create("\"", 3022)
+, Tuple.Create(Tuple.Create("", 2971), Tuple.Create<System.Object, System.Int32>(Href("~/2015/08/how-to-be-the-best-developer-in-the-world")
+, 2971), false)
 );
 
 WriteLiteral(">How to be the best developer in the world</a></li>\r\n                        <li>" +
 " <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2959), Tuple.Create("\"", 3004)
-, Tuple.Create(Tuple.Create("", 2966), Tuple.Create<System.Object, System.Int32>(Href("~/2011/01/friendly-urls-in-classic-asp")
-, 2966), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 3107), Tuple.Create("\"", 3152)
+, Tuple.Create(Tuple.Create("", 3114), Tuple.Create<System.Object, System.Int32>(Href("~/2011/01/friendly-urls-in-classic-asp")
+, 3114), false)
 );
 
 WriteLiteral(">Friendly URLs in classic ASP</a></li>\r\n                        <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3076), Tuple.Create("\"", 3128)
-, Tuple.Create(Tuple.Create("", 3083), Tuple.Create<System.Object, System.Int32>(Href("~/2017/05/electron-app-vs-native-winforms-app")
-, 3083), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 3224), Tuple.Create("\"", 3276)
+, Tuple.Create(Tuple.Create("", 3231), Tuple.Create<System.Object, System.Int32>(Href("~/2017/05/electron-app-vs-native-winforms-app")
+, 3231), false)
 );
 
 WriteLiteral(">Electron app vs native winforms app</a></li>\r\n                        <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3207), Tuple.Create("\"", 3255)
-, Tuple.Create(Tuple.Create("", 3214), Tuple.Create<System.Object, System.Int32>(Href("~/2015/03/moving-from-classic-asp-to-mvc5")
-, 3214), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 3355), Tuple.Create("\"", 3403)
+, Tuple.Create(Tuple.Create("", 3362), Tuple.Create<System.Object, System.Int32>(Href("~/2015/03/moving-from-classic-asp-to-mvc5")
+, 3362), false)
 );
 
 WriteLiteral(">Moving from classic asp to mvc5</a></li>\r\n                        <li> <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3330), Tuple.Create("\"", 3393)
-, Tuple.Create(Tuple.Create("", 3337), Tuple.Create<System.Object, System.Int32>(Href("~/2015/03/generating-barcodes-with-zen-barcode-generator")
-, 3337), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 3478), Tuple.Create("\"", 3541)
+, Tuple.Create(Tuple.Create("", 3485), Tuple.Create<System.Object, System.Int32>(Href("~/2015/03/generating-barcodes-with-zen-barcode-generator")
+, 3485), false)
 );
 
 WriteLiteral(">Generating barcodes with zen barcode generator</a></li>\r\n                    </o" +
@@ -378,7 +410,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 63 "..\..\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.TechArchive(1));
 
             
@@ -399,7 +431,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 70 "..\..\Views\Shared\_Layout.cshtml"
+            #line 74 "..\..\Views\Shared\_Layout.cshtml"
                    Write(Html.TechArchive(2));
 
             
@@ -430,7 +462,7 @@ WriteLiteral("></script>\r\n");
 WriteLiteral("     ");
 
             
-            #line 88 "..\..\Views\Shared\_Layout.cshtml"
+            #line 92 "..\..\Views\Shared\_Layout.cshtml"
 Write(Scripts.Render("~/bundles/jscript"));
 
             

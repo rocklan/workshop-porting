@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -23,6 +24,8 @@ namespace LachlanBarclayNet
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             MvcHandler.DisableMvcResponseHeader = true;
+
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = System.Security.Claims.ClaimTypes.NameIdentifier;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
