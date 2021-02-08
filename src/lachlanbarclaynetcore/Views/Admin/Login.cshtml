@@ -1,0 +1,52 @@
+﻿@model LachlanBarclayNet.ViewModel.AdminLoginViewModel
+@{
+    ViewBag.Title = "Login";
+    ViewBag.MenuItemClass4 = "active";
+}
+
+<style type="text/css">
+    .field-validation-error {
+        color: Red;
+    }
+
+    #Message {
+        height: 200px;
+    }
+</style>
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Name</label>
+                    @Html.TextBoxFor(x => x.Username, new { @class = "form-control", maxlength = "20" })
+                    @Html.ValidationMessageFor(x => x.Username)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">Password</label>
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control", maxlength = "100" })
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+            </div>
+        </div>
+       <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="comment">2FA</label>
+                    @Html.PasswordFor(x => x.QrCode, new { @class = "form-control", maxlength = "100" })
+                    @Html.ValidationMessageFor(x => x.QrCode)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                <input type="submit" class="button" value="submit" />
+            </div>
+        </div>
+    }
+

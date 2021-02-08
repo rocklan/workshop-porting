@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LachlanBarclayNet.ViewModel
 {
+
     public class IndexContactViewModel
     {
         public List<YearPost> Years { get; set; }

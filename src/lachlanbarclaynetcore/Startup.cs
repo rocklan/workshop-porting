@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LachlanBarclayNet.DAO;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,21 @@ namespace lachlanbarclaynetcore
             AppSettings appSettings = new AppSettings();
             Configuration.Bind(appSettings);
             services.AddSingleton(appSettings);
+
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new System.IO.DirectoryInfo(appSettings.DataProtectionDir))
+                .SetApplicationName("SharedCookieApp");
+
+            services.ConfigureApplicationCookie(options => {
+                options.Cookie.Name = ".AspNet.SharedCookie";
+                options.Cookie.Path = "/";
+            });
+
+            services.AddAuthentication(appSettings.AuthScheme)
+                .AddCookie(appSettings.AuthScheme, options =>
+                {
+                    options.Cookie.Name = ".AspNet.SharedCookie";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +71,7 @@ namespace lachlanbarclaynetcore
             app.UseRouting();
             app.UseResponseCaching();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             
@@ -70,5 +87,7 @@ namespace lachlanbarclaynetcore
     public class AppSettings
     {
         public int NumberOfPostsOnHomeScreen { get; set; }
+        public string AuthScheme { get; set; }
+        public string DataProtectionDir { get; set; }
     }
 }
