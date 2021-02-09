@@ -12,6 +12,7 @@ namespace LachlanBarclayNet.Controllers
 {
     public class ContactController : Controller
     {
+
         [Route("contact")]
         public ActionResult Index()
         {

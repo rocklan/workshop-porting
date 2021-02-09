@@ -44,15 +44,26 @@ namespace lachlanbarclaynetcore
                 .SetApplicationName("SharedCookieApp");
 
             services.ConfigureApplicationCookie(options => {
-                options.Cookie.Name = ".AspNet.SharedCookie";
+                options.Cookie.Name = appSettings.AuthCookieName;
                 options.Cookie.Path = "/";
             });
 
             services.AddAuthentication(appSettings.AuthScheme)
                 .AddCookie(appSettings.AuthScheme, options =>
                 {
-                    options.Cookie.Name = ".AspNet.SharedCookie";
+                    options.Cookie.Name = appSettings.AuthCookieName;
                 });
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.Name = appSettings.AuthCookieName;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,14 +78,15 @@ namespace lachlanbarclaynetcore
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
+            
             app.UseRouting();
             app.UseResponseCaching();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -89,5 +101,7 @@ namespace lachlanbarclaynetcore
         public int NumberOfPostsOnHomeScreen { get; set; }
         public string AuthScheme { get; set; }
         public string DataProtectionDir { get; set; }
+        public string AuthCookieName { get; set; }
+        public string SessionCookieName { get; set; }
     }
 }

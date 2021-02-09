@@ -19,11 +19,12 @@ namespace LachlanBarclayNet
         {
             var DataProtectionDir = (String)ConfigurationManager.AppSettings["DataProtectionDir"];
             var AuthScheme = (String)ConfigurationManager.AppSettings["AuthScheme"];
+            var CookieName = (String)ConfigurationManager.AppSettings["AuthCookieName"];
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = AuthScheme,
-                CookieName = ".AspNet.SharedCookie",
+                CookieName = CookieName,
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider(),
                 TicketDataFormat = new AspNetTicketDataFormat(
