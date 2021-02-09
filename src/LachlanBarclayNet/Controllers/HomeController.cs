@@ -65,7 +65,7 @@ namespace LachlanBarclayNet.Controllers
             if (postToView.Published == null  && !User.Identity.IsAuthenticated)
                 return HttpNotFound();
 
-            Session["last-viewed"] = new SessionData { LastRead = DateTime.Now, LastTitle = postToView.PostTitle })
+            Session["last-viewed"] = new SessionData { LastRead = DateTime.Now, LastTitle = postToView.PostTitle };
 
             return View(postToView);
         }
