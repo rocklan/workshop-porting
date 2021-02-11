@@ -2,7 +2,8 @@
 go
 USE [lachlanbarclaynet]
 GO
-/****** Object:  Table [dbo].[Post]    Script Date: 18/01/2021 12:15:25 PM ******/
+set nocount on
+go
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
